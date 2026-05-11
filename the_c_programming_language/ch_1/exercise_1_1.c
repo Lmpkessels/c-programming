@@ -4,7 +4,7 @@
 #define CHAR_BUFF 20 // Buffer for characters in name
 
 /// Greet user after receiving the name as input
-char greet() 
+void greet() 
 {
     char name[CHAR_BUFF];
 
