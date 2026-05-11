@@ -17,7 +17,7 @@ void greet()
 }
 
 // Greet the world
-char hello_world() 
+void hello_world() 
 {
     char hw[] = "Hello, World!";
 
