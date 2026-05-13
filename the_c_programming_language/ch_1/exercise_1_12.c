@@ -14,11 +14,11 @@ int main(void)
         // Checksum of everything that is not a word and indicates
         // a new word
         if (c == ' ' || c == '\t' || c == '\n') {
-            if (state == IN) { // In a new word when left the first word
+            if (state == IN) { // In the next word when left the upfront
                 putchar('\n');
                 state = OUT;
             }
-        } else if (state == OUT) { // Leave the first word and enter a new
+        } else if (state == OUT) { // Leave the first word and enter the next
             state = IN;
             putchar(c);
         } else {
