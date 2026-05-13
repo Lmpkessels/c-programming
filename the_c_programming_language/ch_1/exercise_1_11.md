@@ -1,0 +1,8 @@
+- Multiple tabs in one line
+- Only spaces
+- Only tabs
+- Words chained together
+- Words with multiple spaces
+- Multiple words in one sentence
+- Adding newlines
+- Words with a tab upfront and in between
