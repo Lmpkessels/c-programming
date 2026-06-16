@@ -24,6 +24,8 @@ int main(void)
         wl[i] = 0;
     }
 
+    // Count characters per word and save it in the array
+    // per length index
     while ((c = getchar()) != EOF) {
         if (c == ' ' || c == '\n' || c == '\t') {
             if (state == IN) {
@@ -46,6 +48,7 @@ int main(void)
         }
     }
 
+    // Handle last word if EOF occurs mid-word
     if (state == IN) {
         if (nc < MAXWORD) {
             ++wl[nc];
@@ -54,6 +57,7 @@ int main(void)
         }
     }
 
+    // Set maxvalue to index value
     maxvalue = 0;
     for (i = 1; i < MAXWORD; i++) {
         if (wl[i] > maxvalue) {
@@ -61,6 +65,7 @@ int main(void)
         }
     }
 
+    // Display the histogram
     for (i = 1; i < MAXWORD; i++) {
         printf("%d | ", i);
 
@@ -78,6 +83,7 @@ int main(void)
         printf(" (%d)\n", wl[i]);
     }
 
+    // Display the amounts of words exeeding 11 characters
     if (overflow > 0) {
         printf(
             "\n%d words were >= %d\n",
