@@ -5,29 +5,29 @@ void escape(char sequence[], char transformed[])
 {
     int i = 0, j = 0;
 
-    while (t[i] != '\0') {
+    while (transformed[i] != '\0') {
         switch (t[i]) {
             case '\n':
-                s[j++] = '\\';
-                s[j++] = 'n';
+                sequence[j++] = '\\';
+                sequence[j++] = 'n';
                 break;
             case '\t':
-                s[j++] = '\\';
-                s[j++] = 't';
+                sequence[j++] = '\\';
+                sentence[j++] = 't';
                 break;
             case '\\':
-                s[j++] = '\\';
-                s[j++] = '\\';
+                sequence[j++] = '\\';
+                sequence[j++] = '\\';
                 break;
             default:
-                s[j++] = t[i];
+                sequence[j++] = transformed[i];
                 break;
         }
 
         i++;
     }
 
-    s[j] = '\0';
+    sequence[j] = '\0';
 }
 
 // Transform text back into escape sequence
@@ -35,32 +35,32 @@ void unescape(char sequence[], char transformed[])
 {
     int i = 0, j = 0;
 
-    while (t[i] != '\0') {
-        if (t[i] == '\\') {
+    while (transformed[i] != '\0') {
+        if (transformed[i] == '\\') {
             i++;
-            switch (t[i]) {
+            switch (transformed[i]) {
                 case 'n':
-                    s[j++] = '\n';
+                    sequence[j++] = '\n';
                     break;
                 case 't':
-                    s[j++] = '\t';
+                    sequence[j++] = '\t';
                     break;
                 case '\\':
-                    s[j++] = '\\';
+                    sequence[j++] = '\\';
                     break;
                 default:
-                    s[j++] = '\\';
-                    s[j++] = t[i];
+                    sequence[j++] = '\\';
+                    sequence[j++] = transformed[i];
                     break;
             }
         } else {
-            s[j++] = t[i];
+            sequence[j++] = transformed[i];
         }
 
         i++;
     }
 
-    s[j] = '\0';
+    sequence[j] = '\0';
 }
 
 int main(void) 
