@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 // Transform escape sequence into text
-void escape(char s[], char t[]) 
+void escape(char sequence[], char transformed[]) 
 {
     int i = 0, j = 0;
 
@@ -31,7 +31,7 @@ void escape(char s[], char t[])
 }
 
 // Transform text back into escape sequence
-void unescape(char s[], char t[]) 
+void unescape(char sequence[], char transformed[]) 
 {
     int i = 0, j = 0;
 
