@@ -19,7 +19,7 @@ int binsearch(int x, int v[], int n)
         mid = (low + high) / 2;
     }
 
-    /* Returns updated middle when it is X, else return
+    /* Return updated middle when it's X, else return
     error failure condition */
     if (x == v[mid]) {
         return mid + 1; // +1 for human readability in terminal
