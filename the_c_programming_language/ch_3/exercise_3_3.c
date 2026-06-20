@@ -10,12 +10,15 @@ void expand(char s1[], char s2[])
     int i = 0, j = 0;
 
     while ((c = s1[i++]) != '\0') {
+        // Fill the range upto the end character
         if (s1[i] == '-' && s1[i + 1] >= c) {
             i++;
             while (c < s1[i]) {
                 s2[j++] = c++;
             }
         } else {
+            /* If no range to expand; copy the character
+            directly */
             s2[j++] = c;
         }
     }
