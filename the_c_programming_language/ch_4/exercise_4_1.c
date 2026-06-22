@@ -10,10 +10,12 @@ int strrindex(char s[], char t[])
     rm = -1;
 
     for (i = 0; s[i] != '\0'; i++) {
+        // K is updated when matched characters are found in s
         for (j = i, k = 0; s[j] != '\0' && s[j] == t[k]; j++, k++) {
             ;
         }
 
+        // Get the rightmost index i
         if (k > 0 && t[k] == '\0') {
             rm = i;
         }
