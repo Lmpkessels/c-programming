@@ -79,6 +79,6 @@ Is a repository that tracks progress while learning the C programming languege, 
 
 </details>
 
-**.** **file_io** contains a file parser that counts, _blanks, new lines, and tabs_, after receiving a file from the user of the program.
+**.** **file_io** contains a file parser that counts, _blanks, new lines, and tabs_, after receiving a file from the person using the program.
 
 <hr>
