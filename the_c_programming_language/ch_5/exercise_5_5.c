@@ -15,6 +15,11 @@ void str_cpy(char *s, char *t) {
     while (*t != '\0') {
         *s++ = *t++;
     }
+
+    //Added temp fix
+    for ( ; *s; *s++) {
+        *s = '\0';
+    }
 }
 
 int main(void)
