@@ -1,21 +1,70 @@
+/*
+In the C library you have 2 functions of each below one for 'n' which works
+on 'n' amount of indices, and another without 'n' which uses the full length
+*/
+
 #include <stdio.h>
 
 #define CHAR_BUFF 1000 // Buffer for max amount of characters
 
 // Coppies a specific amount of characters based on 'n'
-void str_n_cpy(char *s, char *t, int n)
+char *str_n_cpy(char *s, char *t, int n)
 {
+    // Start is used such that the first address of where is being coppied 
+    // to can be returned
+    // 
+    // (To save the original address of it's location)
+    char *start = s;
+
     for (int i = 0; i < n; i++) {
-        s[i] = t[i];
+        *s++ = *t++;
     }
+
+    *s = '\0';
+
+    return start;
 }
 
-//TODO: Fix the binary output in print for '\0' such that it becomes normal
-void str_cpy(char *s, char *t) {
-    while (*t != '\0') {
-        *s++ = *t++;
-        *s = '\0';
+char *str_n_cat(char *s, char *t, int n)
+{
+    char *start = s;
+
+    // Get the end of 's'
+    //
+    // Declines 's' at each itteration till its '\0'
+    while (*s != '\0') {
+        s++;
     }
+
+    for (int i = 0; i < n; i++) {
+        *s++ = *t++;
+    }
+    
+    *s = '\0';
+
+    return start;
+}
+
+int str_n_cmp(char *st, char *ct, int n)
+{
+    for (int i = 0; i < n; i++) {
+        if ((unsigned char)*st < (unsigned char)*ct) {
+            return -1;
+        }
+
+        if ((unsigned char)*st > (unsigned char)*ct) {
+            return 1;
+        }
+
+        if ((unsigned char)*st == '\0') {
+            return 0;
+        }
+
+        st++;
+        ct++;
+    }
+
+    return 0;
 }
 
 int main(void)
@@ -25,20 +74,20 @@ int main(void)
 
     // This will not evaluate to the correct size of characters in t because
     // t is a pointer a char has the type of 8 so the size of t will be 8
-    int n = sizeof(t) / sizeof(t[0]);
+    // int n = sizeof(t) / sizeof(t[0]);
 
-    const int enough_to_get_hello = 5;
-    
-    str_n_cpy(s, t, enough_to_get_hello);
+    printf("%s\n", str_n_cpy(s, t, 5));
 
-    printf("%d, %s\n", n, s);
+    char g[CHAR_BUFF] = "Luuk, ";
+    char *c = "is great!";
 
-    char x[CHAR_BUFF];
-    char *y = "Hello Habibi";
+    printf("%s\n", str_n_cat(g, c, 9));
 
-    str_cpy(x, y);
+    char *st = "Hello, World!";
+    char *ct = "Hello, World!";
 
-    printf("%s\n", x);
+    // Prints 0
+    printf("%d\n", str_n_cmp(st, ct, 2));
 
     return 0;
 }
