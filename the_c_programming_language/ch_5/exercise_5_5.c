@@ -45,9 +45,12 @@ char *str_n_cat(char *s, char *t, int n)
     return start;
 }
 
+// Compare *st with *ct and return -1 if st<ct, 1 if st>ct, and 0 if st==ct
 int str_n_cmp(char *st, char *ct, int n)
 {
     for (int i = 0; i < n; i++) {
+        // Unsigned char is used because characters are positive, and 2s
+        // compilement flips the bits this is to prevent it
         if ((unsigned char)*st < (unsigned char)*ct) {
             return -1;
         }
