@@ -8,6 +8,8 @@ int main(void)
 {
     char s[CHAR_BUFF];
     printf("%d\n", get_line(s, CHAR_BUFF));
+
+    return 0;
 }
 
 // Getline is to read a line into s and then return the length

@@ -11,6 +11,8 @@ int main(void)
     str_cat(s, t);
 
     printf("s: %s\nt: %s\n", s, t);
+    
+    return 0;
 }
 
 void str_cat(char *s, char *t)
