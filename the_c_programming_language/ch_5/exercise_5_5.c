@@ -7,6 +7,35 @@ on 'n' amount of indices, and another without 'n' which uses the full length
 
 #define CHAR_BUFF 1000 // Buffer for max amount of characters
 
+char *str_n_cpy(char *, char *, int);
+char *str_n_cat(char *, char *, int);
+int str_n_cmp(char *, char *, int);
+
+int main(void)
+{
+    char s[CHAR_BUFF];
+    char *t = "Hello, world!";
+
+    // This will not evaluate to the correct size of characters in t because
+    // t is a pointer a char has the type of 8 so the size of t will be 8
+    // int n = sizeof(t) / sizeof(t[0]);
+
+    printf("%s\n", str_n_cpy(s, t, 5));
+
+    char g[CHAR_BUFF] = "Luuk, ";
+    char *c = "is great!";
+
+    printf("%s\n", str_n_cat(g, c, 9));
+
+    char *st = "Hello, World!";
+    char *ct = "Hello, World!";
+
+    // Prints 0
+    printf("%d\n", str_n_cmp(st, ct, 2));
+
+    return 0;
+}
+
 // Coppies a specific amount of characters based on 'n'
 char *str_n_cpy(char *s, char *t, int n)
 {
@@ -66,31 +95,6 @@ int str_n_cmp(char *st, char *ct, int n)
         st++;
         ct++;
     }
-
-    return 0;
-}
-
-int main(void)
-{
-    char s[CHAR_BUFF];
-    char *t = "Hello, world!";
-
-    // This will not evaluate to the correct size of characters in t because
-    // t is a pointer a char has the type of 8 so the size of t will be 8
-    // int n = sizeof(t) / sizeof(t[0]);
-
-    printf("%s\n", str_n_cpy(s, t, 5));
-
-    char g[CHAR_BUFF] = "Luuk, ";
-    char *c = "is great!";
-
-    printf("%s\n", str_n_cat(g, c, 9));
-
-    char *st = "Hello, World!";
-    char *ct = "Hello, World!";
-
-    // Prints 0
-    printf("%d\n", str_n_cmp(st, ct, 2));
 
     return 0;
 }
