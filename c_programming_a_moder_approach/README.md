@@ -1,0 +1,3 @@
+# C Programming: A Modern Approach
+
+Going trough the book [C Programming: A Modern Approach](https://www.amazon.nl/Programming-Approach-K-N-King/dp/0393979504/ref=asc_df_0393979504?mcid=f3ad917616d230c3a01997a8e15f351f&tag=nlshogostdde-21&linkCode=df0&hvadid=709979285187&hvpos=&hvnetw=g&hvrand=18422423491277754463&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9102936&hvtargid=pla-487302019846&psc=1&hvocijid=18422423491277754463-0393979504-&hvexpln=0&gad_source=1) to better understand core mechanisms of C and it's std library.
