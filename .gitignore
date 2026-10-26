@@ -8,11 +8,39 @@ the*/*ch_1
 the*/*ch_2
 the*/*ch_3
 the*/*ch_4
+the*/*ch_5
 the*/*ch_6
 the*/*ch_7
 *memory
+*deepening_c
+
+# Folders
+
+*docs
+*experiments
+*helpers
+
+# Future files
+
+*file_io/README.md
+*the_c*/README.md
+*four_by_four.c
+*enter_phone.c
+*break_down_isbn.c
+*addfrac_2_0.c
+
+# PDFs
+
+*.pdf
 
 # Thinking
 
 *exploration*
 *scratch*
+
+# Archived
+
+*archive
+
+# Automating
+*helper.py
