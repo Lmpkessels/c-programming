@@ -27,13 +27,14 @@ int main(void)
     return 0;
 }
 
+// Receive user input in 24-hour format
 int received(void)
 {
     int rhours, rminutes;
 
     printf("Enter a 24-hour time: ");
     if ((scanf("%d:%d", &rhours, &rminutes) != 2) ||
-        rhours < 0 || rhours > 24 || 
+        rhours < 0 || rhours > 23 || 
         rminutes < 0 || rminutes > 59
     ) 
     {
@@ -49,6 +50,8 @@ int absolute(int x)
     return x < 0 ? -x : x;
 }
 
+// Compare received hours with departure hours and print when the
+// closest departure time is and when it arrives
 void 
 compare(
     int hours_since_midnight, 
@@ -64,6 +67,7 @@ compare(
     int closest;
 
     closest = n - 1;
+    // Retrieve the closest departure time
     for (i = 0; i < n - 1; i++) {
         current = ((d_hours[i] * 60) + d_minutes[i]);
         next = ((d_hours[i + 1] * 60) + d_minutes[i + 1]);
@@ -87,6 +91,8 @@ compare(
     ah = a_hours[closest];
     am = a_minutes[closest];
 
+    // Print the departure and arriving in the right format:
+    // a.m. p.m.
     printf(
         "Closest departure time is %d:%02d %s, ariving at %d:%02d %s\n",
         dh % 12 == 0 ? 12 : dh % 12,
