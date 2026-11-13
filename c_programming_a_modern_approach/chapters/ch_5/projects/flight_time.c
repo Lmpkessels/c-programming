@@ -11,11 +11,18 @@ int main(void)
     int a_hours[] = {10, 11, 13, 15, 16, 17, 21, 11};
     int d_minutes[] = {0, 43, 19, 47, 0, 45, 0, 45};
     int a_minutes[] = {16, 52, 31, 0, 8, 55, 20, 58};
-    
+
     hours_since_midnight = received();
+    
+    if (hours_since_midnight == -1) {
+        return 1;
+    }
+
     n = sizeof(d_hours) / sizeof(d_hours[0]);
 
-    compare(hours_since_midnight, d_hours, d_minutes, a_hours, a_minutes, n);
+    compare(
+        hours_since_midnight, d_hours, d_minutes, a_hours, a_minutes, n
+    );
 
     return 0;
 }
@@ -25,12 +32,21 @@ int received(void)
     int rhours, rminutes;
 
     printf("Enter a 24-hour time: ");
-    if (scanf("%d:%d", &rhours, &rminutes) != 2) {
-        printf("Invalid Inputs\n");
+    if ((scanf("%d:%d", &rhours, &rminutes) != 2) ||
+        rhours < 0 || rhours > 24 || 
+        rminutes < 0 || rminutes > 59
+    ) 
+    {
+        printf("Invalid Input\n");
         return -1;
     }
 
     return ((rhours * 60) + rminutes);
+}
+
+int absolute(int x)
+{
+    return x < 0 ? -x : x;
 }
 
 void 
@@ -41,24 +57,43 @@ compare(
     int n
 )
 {
-    int hsm, i, dh, dm, ah, am;
+    int i;
+    int dh, dm, ah, am;
+    int current, next;
+    int sum1, sum2;
+    int closest;
 
-    
-    for (i = 0; i < n; i++) {
-        hsm = ((d_hours[i] * 60) + d_minutes[i]);
+    closest = n - 1;
+    for (i = 0; i < n - 1; i++) {
+        current = ((d_hours[i] * 60) + d_minutes[i]);
+        next = ((d_hours[i + 1] * 60) + d_minutes[i + 1]);
+        
+        if (hours_since_midnight <= next) {
+            sum1 = absolute(current - hours_since_midnight);
+            sum2 = absolute(next - hours_since_midnight);
 
-        if (hours_since_midnight < hsm) {
-            dh = d_hours[i];
-            dm = d_minutes[i];
-            ah = a_hours[i];
-            am = a_minutes[i];
+            if (sum1 <= sum2) {
+                closest = i;
+            } else {
+                closest = i + 1;
+            }
 
             break;
         }
     }
 
+    dh = d_hours[closest];
+    dm = d_minutes[closest];
+    ah = a_hours[closest];
+    am = a_minutes[closest];
+
     printf(
-        "Closest departur time is %d:%d p.m., arriving at %d:%d p.m.\n",
-        dh, dm, ah, am 
+        "Closest departure time is %d:%02d %s, ariving at %d:%02d %s\n",
+        dh % 12 == 0 ? 12 : dh % 12,
+        dm,
+        dh < 12 ? "a.m." : "p.m.",
+        ah % 12 == 0 ? 12 : ah % 12,
+        am,
+        ah < 12 ? "a.m." : "p.m."
     );
 }
