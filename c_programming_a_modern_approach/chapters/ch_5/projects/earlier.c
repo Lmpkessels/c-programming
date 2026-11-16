@@ -18,8 +18,8 @@ int main(void)
         return -1;
     }
 
-    sum1 = (((f_year * 10000) + (f_month + 100)) + f_day);
-    sum2 = (((s_year * 10000) + (s_month + 100)) + f_day);
+    sum1 = (((f_year * 10000) + (f_month * 100)) + f_day);
+    sum2 = (((s_year * 10000) + (s_month * 100)) + f_day);
 
     if (sum1 < sum2) {
         printf(
