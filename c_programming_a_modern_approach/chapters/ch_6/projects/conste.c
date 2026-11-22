@@ -3,7 +3,7 @@
 int main(void)
 {
     int i, n;
-    float factorial;
+    float fractorial;
 
     printf("Enter a number: ");
     if (scanf("%d", &n) != 1) {
